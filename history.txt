@@ -1,0 +1,111 @@
+    1  sudo yum update
+    2  id
+    3  su
+    4  exit
+    5  gnome-tweaks 
+    6  exit
+    7  gnome-tweaks 
+    8  oc
+    9  sudo su
+   10  exit
+   11  sudo su
+   12  exit
+   13  poweroff
+   14  exit
+   15  oc login --token=sha256~_0KHbwjSJGoMRHMwsUCNmLf0kxYOgG6USu9fW-n0sZY --server=https://api.ocp.ibm.edu:6443
+   16  oc login --token=sha256~hfMaVPsHKoPItzq9zHzt0DDEdmqq_iRMAQSjfHBImD8 --server=https://api.ocp.ibm.edu:6443
+   17  cd /var/config/user/idp/0/secret/v4-0-config-user-idp-0-file-data/htpasswd
+   18  cd /var/config/user/idp/0/secret/v4-0-config-user-idp-0-file-data
+   19  cd /var
+   20  cd config
+   21  cd 
+   22  ls
+   23  ls -l
+   24  cd documents
+   25  cd Documents
+   26  ls
+   27  cd lab
+   28  ls
+   29  cd lab1640/
+   30  ls
+   31  oc get secret htpass-secret -ojsonpath={.data.htpasswd} -n openshift-config | base64 --decode > users.htpasswd
+   32  ls
+   33  cat users.htpasswd 
+   34  htpasswd -bB users.htpasswd user01 Passw0rd!
+   35  htpasswd -bB users.htpasswd user02 Passw0rd!
+   36  htpasswd -bB users.htpasswd user03 Passw0rd!
+   37  htpasswd -bB users.htpasswd user04 Passw0rd!
+   38  htpasswd -bB users.htpasswd user05 Passw0rd!
+   39  htpasswd -bB users.htpasswd user06 Passw0rd!
+   40  htpasswd -bB users.htpasswd user07 Passw0rd!
+   41  htpasswd -bB users.htpasswd user08 Passw0rd!
+   42  htpasswd -bB users.htpasswd user09 Passw0rd!
+   43  htpasswd -bB users.htpasswd user10 Passw0rd!
+   44  htpasswd -bB users.htpasswd user11 Passw0rd!
+   45  htpasswd -bB users.htpasswd user12 Passw0rd!
+   46  oc create secret generic htpass-secret --from-file=htpasswd=users.htpasswd --dry-run=client -o yaml -n openshift-config | oc replace -f -
+   47  cat users.htpasswd 
+   48  oc adm policy add-role-to-user admin user01 -n cp4i-1
+   49  oc adm policy add-role-to-user admin user02 -n cp4i-2
+   50  oc adm policy add-role-to-user view <username> -n openshift-operators
+   51  oc adm policy add-role-to-user view <username> -n openshift-operator-lifecycle-manager
+   52  oc adm policy add-role-to-user view user01 -n openshift-operator-lifecycle-manager
+   53  oc adm policy add-role-to-user view user01 -n openshift-operators
+   54  oc adm policy add-role-to-user view user02 -n openshift-operators
+   55  oc adm policy add-role-to-user view user02 -n openshift-operator-lifecycle-manager
+   56  oc adm policy add-role-to-user admin user03 -n cp4i-3
+   57  oc adm policy remove-role-from-user view user02 -n openshift-operator-lifecycle-manager
+   58  oc adm policy remove-role-from-user view user01 -n openshift-operator-lifecycle-manager
+   59  oc adm policy remove-role-from-user view user02 -n openshift-operators
+   60  oc adm policy remove-role-from-user view user01 -n openshift-operators
+   61  oc adm policy add-role-to-user admin user04 -n cp4i-4
+   62  oc adm policy add-role-to-user admin user05 -n cp4i-5
+   63  oc adm policy add-role-to-user admin user06 -n cp4i-6
+   64  oc adm policy add-role-to-user admin user07 -n cp4i-7
+   65  oc adm policy add-role-to-user admin user08 -n cp4i-8
+   66  oc adm policy add-role-to-user admin user09 -n cp4i-9
+   67  oc adm policy add-role-to-user admin user10 -n cp4i-10
+   68  oc adm policy add-role-to-user admin user10 -n cp4i-11
+   69  oc adm policy remove-role-from-user admin user10 -n cp4i-11
+   70  oc adm policy add-role-to-user admin user11 -n cp4i-11
+   71  oc adm policy add-role-to-user admin user12 -n cp4i-12
+   72  git
+   73  ls
+   74  cd Documents
+   75  ls
+   76  mkdir lab
+   77  cd lab
+   78  git clone https://github.com/artlinca/lab1640.git
+   79  ls
+   80  cd lab1640/
+   81  ls
+   82  cd scripts
+   83  ls
+   84  oc login --token=sha256~_0KHbwjSJGoMRHMwsUCNmLf0kxYOgG6USu9fW-n0sZY --server=https://api.ocp.ibm.edu:6443
+   85  oc get nodes
+   86  ip addr
+   87  ifconfig
+   88  ls
+   89  ls -lav
+   90  ./setup-apiconnect.sh cp4i-1
+   91  ./setup-apiconnect.sh cp4i-2
+   92  ./setup-apiconnect.sh cp4i-3
+   93  ./setup-apiconnect.sh cp4i-4
+   94  ./setup-apiconnect.sh cp4i-5
+   95  ./setup-apiconnect.sh cp4i-6
+   96  ./setup-apiconnect.sh cp4i-7
+   97  ./setup-apiconnect.sh cp4i-8
+   98  ./setup-apiconnect.sh cp4i-9
+   99  ./setup-apiconnect.sh cp4i-10
+  100  ./setup-apiconnect.sh cp4i-11
+  101  ./setup-apiconnect.sh cp4i-12
+  102  ls
+  103  sudo -i
+  104  ls
+  105  cd Documents/
+  106  ls
+  107  cd lab
+  108  ls
+  109  tree
+  110  history
+  111  history > history.txt

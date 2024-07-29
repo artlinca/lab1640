@@ -29,8 +29,13 @@ then
     exit 1
 fi
 
+NN=$(echo $NAMESPACE | sed 's/.*-\(.*\)/\1/')
+echo "append with $NN"
+
 oc new-project $NAMESPACE 2> /dev/null
 oc project $NAMESPACE
+
+oc apply -f resources/ibmedu-tls-cert.yaml -n $NAMESPACE
 
 if [ "$INSTALL_CP4I" = true ] ; then
   oc patch storageclass $BLOCK_STORAGE -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
@@ -45,7 +50,7 @@ if [ "$INSTALL_CP4I" = true ] ; then
   echo ""
   line_separator "START - INSTALLING PLATFORM NAVIGATOR"
   cat $SCRIPT_DIR/resources/platform-nav.yaml_template |
-  sed "s#{{NAMESPACE}}#$NAMESPACE#g;" > $SCRIPT_DIR/resources/platform-nav.yaml
+  sed "s#{{NAMESPACE}}#$NAMESPACE#g; | sed "s#{{NN}}#$NN#g;" > $SCRIPT_DIR/resources/platform-nav.yaml
 
 oc apply -f resources/platform-nav.yaml
   sleep 30
@@ -80,7 +85,7 @@ echo ""
 line_separator "START - INSTALLING API CONNECT"
 
 cat $SCRIPT_DIR/resources/apic-cluster.yaml_template |
-  sed "s#{{NAMESPACE}}#$NAMESPACE#g;" > $SCRIPT_DIR/resources/apic-cluster.yaml
+  sed "s#{{NAMESPACE}}#$NAMESPACE#g; | sed "s#{{NN}}#$NN#g;" > $SCRIPT_DIR/resources/apic-cluster.yaml
 
 oc apply -f resources/apic-cluster.yaml
 sleep 30

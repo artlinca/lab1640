@@ -19,6 +19,9 @@ metadata:
   labels:
     backup.integration.ibm.com/component: platformnavigator        
 spec:
+  tls:
+    secretName: ibmedu-tls-cert
+  uiHostname: cp4i{{NN}}.ibm.edu
   license:
     accept: true
     license: L-JTPV-KYG8TF

@@ -23,8 +23,29 @@ metadata:
   annotations: 
     apiconnect-operator/backups-not-configured: "true"
 spec:
+  management:
+    apiManagerEndpoint:
+      hosts:
+        - name: apim{{NN}}.ibm.edu
+          secretName: ibmedu-tls-cert
+    cloudManagerEndpoint:
+      hosts:
+        - name: cdm{{NN}}.ibm.edu
+          secretName: ibmedu-tls-cert
+    consumerCatalogEndpoint:
+      hosts:
+        - name: consumer{{NN}}.ibm.edu
+          secretName: ibmedu-tls-cert
   gateway:
-    replicaCount: 1
+    gatewayEndpoint:
+      hosts:
+        - name: api{{NN}}.ibm.edu
+          secretName: ibmedu-tls-cert
+  portal:
+    portalUIEndpoint:
+      hosts:
+        - name: portal{{NN}}.ibm.edu
+          secretName: ibmedu-tls-cert
   license:
     accept: true
     use: nonproduction

@@ -46,12 +46,13 @@ echo ""
 line_separator "START - INSTALLING APP"
 echo "Installing app into $namespace"
 
-rest_service=`oc get service -n $namespace -l app.kubernetes.io/name=rest-producer,eventstreams.ibm.com/kind=EventStreams --no-headers=true | awk '/external/{print $1}'`
-if [ -z $rest_service ]
-then
-    echo "Event Streams not found in namespace $namespace"
-    exit 1
-fi
+rest_service='https://no-event-stream-deployed/'
+#rest_service=`oc get service -n $namespace -l app.kubernetes.io/name=rest-producer,eventstreams.ibm.com/kind=EventStreams --no-headers=true | awk '/external/{print $1}'`
+#if [ -z $rest_service ]
+#then
+#    echo "Event Streams not found in namespace $namespace"
+#    exit 1
+#fi
 
 export REST_ENDPOINT=$rest_service.$namespace.svc
 echo Using $REST_ENDPOINT as the Event Streams REST endpoint
