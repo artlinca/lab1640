@@ -32,6 +32,8 @@ fi
 NN=$(echo $NAMESPACE | sed 's/.*-\(.*\)/\1/')
 echo "append with $NN"
 
+echo "10.100.1.2 cp4i$NN.ibm.edu apim$NN.ibm.edu api$NN.ibm.edu cdm$NN.ibm.edu portal$NN.ibm.edu consumer$NN.ibm.edu" | sudo tee -a /etc/hosts
+
 oc new-project $NAMESPACE 2> /dev/null
 oc project $NAMESPACE
 
