@@ -50,7 +50,7 @@ if [ "$INSTALL_CP4I" = true ] ; then
   echo ""
   line_separator "START - INSTALLING PLATFORM NAVIGATOR"
   cat $SCRIPT_DIR/resources/platform-nav.yaml_template |
-  sed "s#{{NAMESPACE}}#$NAMESPACE#g; | sed "s#{{NN}}#$NN#g;" > $SCRIPT_DIR/resources/platform-nav.yaml
+  sed "s#{{NAMESPACE}}#$NAMESPACE#g;" | sed "s#{{NN}}#$NN#g;" > $SCRIPT_DIR/resources/platform-nav.yaml
 
 oc apply -f resources/platform-nav.yaml
   sleep 30
@@ -85,7 +85,7 @@ echo ""
 line_separator "START - INSTALLING API CONNECT"
 
 cat $SCRIPT_DIR/resources/apic-cluster.yaml_template |
-  sed "s#{{NAMESPACE}}#$NAMESPACE#g; | sed "s#{{NN}}#$NN#g;" > $SCRIPT_DIR/resources/apic-cluster.yaml
+  sed "s#{{NAMESPACE}}#$NAMESPACE#g;" | sed "s#{{NN}}#$NN#g;" > $SCRIPT_DIR/resources/apic-cluster.yaml
 
 oc apply -f resources/apic-cluster.yaml
 sleep 30
