@@ -41,11 +41,11 @@ spec:
       hosts:
         - name: api{{NN}}.ibm.edu
           secretName: ibmedu-tls-cert
-  portal:
-    portalUIEndpoint:
-      hosts:
-        - name: portal{{NN}}.ibm.edu
-          secretName: ibmedu-tls-cert
+  #portal:
+   # portalUIEndpoint:
+    #  hosts:
+     #   - name: portal{{NN}}.ibm.edu
+      #    secretName: ibmedu-tls-cert
   license:
     accept: true
     use: nonproduction
